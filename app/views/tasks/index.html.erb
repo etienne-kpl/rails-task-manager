@@ -1,0 +1,7 @@
+<h1>Here ar all the tasks</h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <%# On passe l'id en argument dans le path %>
+    <li><%= task.completed %> <%= link_to task.title, task_path(task.id) %></li>
+  <% end %>
+</ul>
