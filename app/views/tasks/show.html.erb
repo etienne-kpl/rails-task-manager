@@ -1,4 +1,13 @@
-<h1><%= @task.title %></h1>
-<p>Completed: <%= @task.completed %></p>
-<p>Details: <%= @task.details %></p>
-<p></p>
+<div class="d-flex justify-content-between mb-3">
+  <h1><%= @task.title %></h1>
+  <%= link_to 'Edit this task', edit_task_path, class: 'btn btn-secondary' %>
+</div>
+<div class="alert alert-secondary">
+  <p class="m-0">Details: <%= @task.details %></p>
+</div>
+<% if @task.completed %>
+  <p><i class="fa-regular fa-square-check"></i> This task is completed</p>
+<% else %>
+  <p><i class="fa-regular fa-square"></i> This task is not completed yet</p>
+<% end %>
+<%= link_to 'Back to list', tasks_path %>

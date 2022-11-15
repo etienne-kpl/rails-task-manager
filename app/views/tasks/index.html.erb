@@ -2,6 +2,18 @@
 <ul>
   <% @tasks.each do |task| %>
     <%# On passe l'id en argument dans le path %>
-    <li><%= task.completed %> <%= link_to task.title, task_path(task.id) %></li>
+    <li>
+      <% if task.completed %>
+        <i class="fa-regular fa-square-check"></i>
+      <% else %>
+        <i class="fa-regular fa-square"></i>
+      <% end %>
+      <%= link_to task.title, task_path(task.id), class: "text-decoration-none" %> •
+      <%= link_to task_path(task.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+        <i class="fa-regular fa-trash-can"></i>
+      <% end %>
+    </li>
   <% end %>
 </ul>
+
+<%= link_to 'Add a new task', new_task_path %>
